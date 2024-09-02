@@ -18,7 +18,6 @@ const userSchema = new Schema({
     },
     image:{
         type:Object,
-        required:true,
 
     },
     phone:{
@@ -28,7 +27,7 @@ const userSchema = new Schema({
         type:String,
     },
     confirmEmail:{
-        type:String,
+        type:Boolean,
         default:false,
     },
     gender:{
@@ -45,10 +44,17 @@ const userSchema = new Schema({
         default:'User',
         enum:['User','Admin'],
     },
+    sendCode:{
+        type:String,
+        default:null,
+    },
+    changePasswordTime:{
+        type:Date,
+    }
 
 },
 {timestamps:true},
 );
 
-const userModel = mongoose.model.User || model('User',userSchema);
+const userModel = mongoose.models.User || model('User',userSchema);
 export default userModel;
